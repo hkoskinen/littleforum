@@ -12,6 +12,9 @@ public class User {
     private String bio;
     private String location;
 
+    @OneToOne(mappedBy = "user")
+    private Post post;
+
     public User() {
     }
 
@@ -45,6 +48,14 @@ public class User {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     @Override

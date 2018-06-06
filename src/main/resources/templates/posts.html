@@ -10,7 +10,7 @@
         <div th:if="${posts != null}" th:each="post : ${posts}">
             <p th:text="${post.id}"></p>
             <p th:text="${post.body}"></p>
-            <p th:text="${post.author_id}"></p>
+            <p th:text="${post.user.username}"></p>
             <p th:text="${post.topic.name}"></p>
         </div>
     </div>

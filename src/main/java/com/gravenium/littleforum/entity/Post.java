@@ -9,7 +9,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String body;
-    private int author_id;
+
+    @OneToOne
+    @JoinColumn(name = "author_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "topic_id")
@@ -34,12 +37,12 @@ public class Post {
         this.body = body;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Topic getTopic() {
@@ -55,7 +58,7 @@ public class Post {
         return "Post{" +
                 "id=" + id +
                 ", body='" + body + '\'' +
-                ", author_id=" + author_id +
+                ", author_id=" + user.getId() +
                 ", topic_id=" + topic.getId() +
                 '}';
     }
