@@ -7,11 +7,11 @@
 <body>
     <div class="container">
         <h1>Posts</h1>
-        <div th:each="post : ${posts}">
+        <div th:if="${posts != null}" th:each="post : ${posts}">
             <p th:text="${post.id}"></p>
             <p th:text="${post.body}"></p>
             <p th:text="${post.author_id}"></p>
-            <p th:text="${post.topic_id}"></p>
+            <p th:text="${post.topic.name}"></p>
         </div>
     </div>
 </body>

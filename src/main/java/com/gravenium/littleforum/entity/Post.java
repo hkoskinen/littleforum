@@ -10,7 +10,10 @@ public class Post {
     private int id;
     private String body;
     private int author_id;
-    private int topic_id;
+
+    @ManyToOne
+    @JoinColumn(name = "topic_id")
+    private Topic topic;
 
     public Post() {
     }
@@ -39,12 +42,12 @@ public class Post {
         this.author_id = author_id;
     }
 
-    public int getTopic_id() {
-        return topic_id;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setTopic_id(int topic_id) {
-        this.topic_id = topic_id;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class Post {
                 "id=" + id +
                 ", body='" + body + '\'' +
                 ", author_id=" + author_id +
-                ", topic_id=" + topic_id +
+                ", topic_id=" + topic.getId() +
                 '}';
     }
 }
