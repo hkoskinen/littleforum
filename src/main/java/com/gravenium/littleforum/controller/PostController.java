@@ -1,10 +1,13 @@
 package com.gravenium.littleforum.controller;
 
+import com.gravenium.littleforum.entity.Post;
 import com.gravenium.littleforum.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class PostController {
@@ -13,8 +16,9 @@ public class PostController {
     private PostRepository postRepository;
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String posts() {
-        return postRepository.findAll().toString();
+    public String posts(Model model) {
+        List<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        return "posts";
     }
 }
